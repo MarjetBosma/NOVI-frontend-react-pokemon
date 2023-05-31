@@ -2,13 +2,12 @@ import React, { useEffect, useState } from 'react';
 import './PokemonCard.css'
 import axios from 'axios'
 
-
 function PokemonCard({ pokemonName }) {
-    const [pokemon, setPokemon] = useState([]);
+    const [pokemon, setPokemon] = useState({});
 
     useEffect(() => {
 
-        async function fetchPokemonData() {
+        async function fetchSinglePokemon() {
 
             try {
                 const response = await axios.get(`https://pokeapi.co/api/v2/pokemon/${pokemonName}`);
@@ -19,12 +18,11 @@ function PokemonCard({ pokemonName }) {
                 console.error(e)
             }
         }
-        void fetchPokemonData();
+        void fetchSinglePokemon;
     }, [pokemonName])
 
     return (
-        <>
-            <section className="poke-card">
+            <section className="pokemon-card">
                 {Object.keys(pokemon).length > 0 &&
                     <>
                         <h2>{pokemon.species.name}</h2>
@@ -33,14 +31,17 @@ function PokemonCard({ pokemonName }) {
                         <h3>Weight: {pokemon.weight} </h3>
                         <ul>Abilities:
                             {pokemon.abilities.map((newArray) => {
-                                return <li key={`${newArray.ability.name`}
-                            })}
+                                return (
+                                    <li key={`${newArray.ability.name}`}>
+                                    {newArray.ability.name}
+                                    </li>
+                                   )
+                               })}
                         </ul>
                     </>
                 }
             </section>
-        </>
-    );
-}
+        );
+    }
 
 export default PokemonCard;
