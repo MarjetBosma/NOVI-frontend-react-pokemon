@@ -1,3 +1,5 @@
+// Ik vind dit nog erg lastige materie, met name voor wat betreft het aanroepen en weergeven van de juiste endpoints. Ik heb hier dan ook hulp bij gehad van de SME ér en een medestudent, en het werkt nu. Ik heb echter niet het gevoel dat ik overal werkelijk doorgrond wat er gebeurt.
+
 import React, { useState, useEffect } from 'react';
 import './App.css';
 import axios from 'axios'
@@ -18,8 +20,8 @@ function App() {
             setError(false);
 
             try {
-                const response = await axios.get(endpoint);
-                setPokemons(response.data.results);
+                const { data } = await axios.get(endpoint);
+                setPokemons(data);
             } catch(e) {
                 console.error(e);
                 setError(true);
@@ -38,20 +40,20 @@ function App() {
              {/*Als ik het logo probeer weer te geven krijg ik een foutmelding die ik niet begrijp, dus om de applicatie te kunnen runnen, heb ik dit maar uitgezet.*/}
                <section className="button-wrapper">
                    <Button
-                       disabled={!pokemons.previous} // De knop werkt niet als er geen vorige lijst van 20 pokemons is. // De knop werkt niet als er geen lijst van volgende (max) 20 pokemons zijn. Tenminste, dat is de bedoeling, want om mijn onduidelijke redenen blijft de button altijd op disabled staan.
+                       disabled={!pokemons.previous} // De knop werkt niet als er geen vorige lijst van 20 pokemons is.
                        clickHandler={() => setEndpoint(pokemons.previous)}
                    >
                        Vorige
                    </Button>
                    <Button
-                       disabled={!pokemons.next} // De knop werkt niet als er geen lijst van volgende (max) 20 pokemons zijn. Tenminste, dat is de bedoeling, want om mijn onduidelijke redenen blijft de button altijd op disabled staan.
+                       disabled={!pokemons.next} // De knop werkt niet als er geen lijst van volgende (max) 20 pokemons zijn.
                        clickHandler={() => setEndpoint(pokemons.next)}
                    >
                        Volgende
                    </Button>
                </section>
-             {pokemons &&
-                 pokemons.map((pokemonCard) => {
+             {pokemons.results &&
+                 pokemons.results.map((pokemonCard) => {
                  return <PokemonCard key={pokemonCard.name} pokemonName={pokemonCard.name}/>
              })}
            </>
