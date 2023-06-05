@@ -18,7 +18,7 @@ function PokemonCard({ pokemonName }) {
                 console.error(e)
             }
         }
-        void fetchSinglePokemon;
+        void fetchSinglePokemon();
     }, [pokemonName])
 
     return (
@@ -29,10 +29,11 @@ function PokemonCard({ pokemonName }) {
                         <img src={pokemon.sprites.front_default} alt={`image of ${pokemon.species.name}`} />
                         <h3>Moves: {pokemon.moves.length}</h3>
                         <h3>Weight: {pokemon.weight} </h3>
-                        <ul>Abilities:
+                        <h3>Abilities:</h3>
+                        <ul>
                             {pokemon.abilities.map((newArray) => {
                                 return (
-                                    <li key={`${newArray.ability.name}`}>
+                                    <li className="ability" key={`${newArray.ability.name}`}>
                                     {newArray.ability.name}
                                     </li>
                                    )
