@@ -9,7 +9,7 @@ import Button from './components/button/Button';
 import PokemonCard from './components/pokemon-card/PokemonCard';
 
 function App() {
-    const [pokemons, setPokemons] = useState([]);
+    const [pokemons, setPokemons] = useState();
     const [error, setError] = useState(false);
     const [loading, toggleLoading] = useState(false);
     const [endpoint, setEndpoint] = useState('https://pokeapi.co/api/v2/pokemon/');
