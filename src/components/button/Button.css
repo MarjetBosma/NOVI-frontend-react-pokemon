@@ -1,0 +1,10 @@
+/* De styling heb ik bewust eenvoudig gehouden, aangezien het schrijven van de logica me al veel tijd kostte.*/
+
+.previous-next-button {
+
+    font-family: Verdana, sans-serif;
+    font-size: 16px;
+    padding: 12px 16px;
+    margin: 30px;
+}
+

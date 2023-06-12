@@ -1,0 +1,27 @@
+/* De styling heb ik bewust eenvoudig gehouden, aangezien het schrijven van de logica me al veel tijd kostte.*/
+
+p {
+    font-size: 16px;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Verdana, sans-serif;
+}
+
+.pokemon-deck {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    max-width: 1000px;
+    padding: 30px 0;
+}
+
+.button-wrapper {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-top: 20px;
+}
