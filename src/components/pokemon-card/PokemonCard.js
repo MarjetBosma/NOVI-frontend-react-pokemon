@@ -23,7 +23,7 @@ function PokemonCard({ pokemonName }) {
 
     return (
             <section className="pokemon-card">
-                {Object.keys(pokemon).length > 0 &&
+                {pokemon &&
                     <>
                         <h2>{pokemon.species.name}</h2>
                         <img src={pokemon.sprites.front_default} alt={`image of ${pokemon.species.name}`} />
